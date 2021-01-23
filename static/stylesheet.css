@@ -29,6 +29,15 @@
     src: local('Dubai Bold'), url('../fonts/Dubai-Bold.woff') format('woff');
 }
 
+html, body {
+    height: 100%;
+    background-image: url("../img/back.png");
+    background-size: cover;
+    overflow-y: hidden;
+    margin: 0;
+    overflow: hidden;
+}
+
 .topbar {
     position: fixed;
     height: 0.25em;
@@ -44,4 +53,46 @@
     top: 0;
     background-color: #6441a5;
     z-index: 1;
+}
+
+a.topnav {
+    color: white;
+    font-family: 'Dubai Bold';
+    width: 10%;
+    text-align: center;
+    margin-right: 2em;
+    margin-left: 2em;
+    text-decoration: none;
+    vertical-align: default;
+    font-size: 1.5em;
+}
+
+#scene {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;
+    background-size: cover;
+}
+
+#img {
+    object-fit: fill;
+}
+
+#full {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;
+    background-size: cover;
+}
+
+#about {
+    padding: 30px;
+    max-width:20%;
+    height:auto;
+    border-radius: 300px;
+    z-index: 5;
 }
