@@ -12,7 +12,7 @@ from random import randrange
 
 df = pd.read_csv('./Dec12Edges.csv')
     
-input_username = "Atrioc"
+input_username = "Nivfnja"
 
 # Gathers all rows streamer is in from the dataframe
 streamer_rows = df['Target'].loc[lambda x: x==input_username].index
