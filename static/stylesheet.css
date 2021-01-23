@@ -28,3 +28,20 @@
     font-weight: normal;
     src: local('Dubai Bold'), url('../fonts/Dubai-Bold.woff') format('woff');
 }
+
+.topbar {
+    position: fixed;
+    height: 0.25em;
+    background-color: #bd65d8;
+    z-index: 2;
+}
+
+#topnav {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 5%;
+    top: 0;
+    background-color: #6441a5;
+    z-index: 1;
+}
