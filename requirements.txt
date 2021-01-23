@@ -49,7 +49,6 @@ Flask==1.1.2
 fsspec==0.7.4
 future==0.18.2
 glob2==0.7
-gmpy2==2.0.8
 google-api-core==1.23.0
 google-auth==1.23.0
 google-cloud-automl==2.1.0
@@ -165,8 +164,6 @@ sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.4
 statsmodels==0.11.1
 tables==3.6.1
-tabula==1.0.5
-tabula-py==2.2.0
 tblib==1.6.0
 terminado==0.8.3
 testpath==0.4.4
