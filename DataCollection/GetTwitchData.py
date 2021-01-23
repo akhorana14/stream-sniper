@@ -13,7 +13,7 @@ def GetTopStreams(numberOfStreams):
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="UTF-8")
 
     #Header auth values taken from twitchtokengenerator.com, not sure what to do if they break
-    Headers = {'Client-ID': cr.clientID, 'Authorization': "Bearer " + cr.clientSecret}
+    Headers = {'Client-ID': 'f0ilugz4jjhaheg2ioky2oe0wif8oo', 'Authorization': "Bearer " + 'usevmxxovxb8567f0pf71oz7e1zy91'}
 
     #Request top 100 viewed streams on twitch
     r = requests.get('https://api.twitch.tv/helix/streams?first=' + str(numberOfStreams), headers=Headers)
