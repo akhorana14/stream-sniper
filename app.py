@@ -5,13 +5,8 @@ from flask import Flask, render_template, request, redirect, send_from_directory
 app = Flask(__name__)
 
 @app.route('/')
-def home():
+def index():
    return render_template('index.html')
-@app.route('/upload', methods=['POST'])
-def upload_file():
-   
-   
-   return send_file('download.ics')
    
 if __name__ == '__main__':
    app.run(debug=True)
