@@ -36,6 +36,7 @@ html, body {
     overflow-y: hidden;
     margin: 0;
     overflow: hidden;
+    display: static;
 }
 
 .topbar {
@@ -91,8 +92,27 @@ a.topnav {
 
 #about {
     padding: 30px;
-    max-width:20%;
+    max-width:20vw;
     height:auto;
     border-radius: 300px;
-    z-index: 5;
+}
+
+a.linkedin {
+    color: white;
+    font-family: 'Dubai Bold';
+    width: 20vw;
+    padding: 5.25vw;
+    text-align: center;
+    margin-right: 2em;
+    margin-left: 2em;
+    text-decoration: none;
+    vertical-align: default;
+    font-size: 1.5em;
+}
+
+#team {
+    color: white;
+    font-family: 'Dubai Bold';
+    text-align: center;
+    font-size: 4em;
 }
