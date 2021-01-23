@@ -42,15 +42,46 @@ def getRecommendations(input_username):
 
 
 
-def main(username):
-    users = client.users.translate_usernames_to_ids(['ludwig','pokimane','xQcOW','GMHikaru'])
+def getInfoFromAccount(username):
+    
+    streamer_dict = dict()
+    streamer_dict
+
+    user = client.users.translate_usernames_to_ids([username])[0]
+    follows = client.users.get_follows(user_id=user.id, limit=100, offset=0)
+    for streamers in follows:
+        try:
+            recs = getRecommendations(streamers.channel.name)
+            for rec in recs:
+                if not rec in streamer_dict:
+                    streamer_dict[rec] = 1
+                else:
+                    streamer_dict[rec] +=1
+        except IndexError:
+            continue
+
+    for streamers in follows:
+        if streamers.channel.name in streamer_dict:
+            del streamer_dict[streamers.channel.name]
+
+    
+    streamer_dict = sorted(streamer_dict.items(), key = 
+        lambda kv:(kv[1], kv[0]),reverse = True)
+
+
     l = []
-    for user in users:
-        channel = client.channels.get_by_id(user.id)
-        l.append([channel.name,channel.logo,channel.url])
+    for i in range(5):
+        l.append(streamer_dict[i][0])
     
 
     return l
+    
+
+    
+  
+    
+
+    
 
 
 
@@ -61,4 +92,4 @@ def main(username):
 
 
 if __name__ == '__main__':
-    main(None)
+    getInfoFromAccount('SpecialSnowflack')
