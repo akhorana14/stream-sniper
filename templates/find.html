@@ -32,10 +32,9 @@
         <p id="team">OR Enter your Twitch Username: </p>
         <input onkeypress="addUsername();" type="text" id="search2">
         
-        <form id="user" action="/sendUser" method="post">
-            <!-- <input data="yourName" name="name" style="opacity: 0;"> -->
-            <input type='hidden' id= 'hiddenField' name='id' />
-            <input type="submit" id="go" style="opacity: 1;"> 
+        <form id="user" method="post">
+            <input type='hidden' id= 'hiddenField' name='' value='' />
+            <input type="submit" id="go" style="opacity: 1;">
         </form>
     </div>
     <script>
@@ -43,7 +42,7 @@
             var yourName = document.getElementById("search2").value
             if(event.keyCode == 13 && yourName != "") {
                 console.log(yourName);
-                document.getElementById('hiddenField').value = yourName;
+                document.getElementById('hiddenField').id= yourName;
             }
         }
         
