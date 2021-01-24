@@ -96,29 +96,12 @@ def randomStreamer():
     dict = {}
     streamers = [element['user_name'] for element in j['data']]
 
-    streamer_dict =  {}
-    for streamer in streamers:
-        try:
-            recs = getRecommendations(streamer)
-            for rec in recs:
-                if not rec in streamer_dict:
-                    streamer_dict[rec] = 1
-                else:
-                    streamer_dict[rec] +=1
-        except IndexError:
-            continue
+    i = int(random() * 50)
+    streamer_dict =  {streamers[i] : 1, streamers[i+10] : 1, streamers[i+20] : 1, streamers[i+30] : 1, streamers[i+40] : 1}
 
     return getList(streamer_dict)
 
     
-
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
     print(getInfoFromAccount('SpecialSnowflack'))

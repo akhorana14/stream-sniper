@@ -2,7 +2,7 @@ import os
 import sys
 from os import listdir
 from flask import Flask, render_template, request, redirect, send_from_directory, send_file
-from StreamScraper import getRecommendations, getInfoFromAccount
+from StreamScraper import getRecommendations, getInfoFromAccount, randomStreamer
 app = Flask(__name__)
 
 @app.route('/')
@@ -21,7 +21,13 @@ def find():
 def sendUser():
    if request.method == 'GET':
       user_name = request.args['id']
-      streamers = getInfoFromAccount(user_name)
+      if(user_name is not '_'):
+         try:
+            streamers = getInfoFromAccount(user_name)
+         except IndexError:
+            streamers = randomStreamer()
+      else:
+         streamers = randomStreamer()
       s = []
       for streamer in streamers:
          for attr in streamer:
