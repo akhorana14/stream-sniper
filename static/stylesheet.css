@@ -155,3 +155,29 @@ a.linkedin {
     left: 45vw;
     opacity: 1;
 }
+
+#streamer {
+    position: fixed;
+    outline: white;
+    border: white;
+    align-content: center;
+}
+
+#visit {
+    padding-left: 2vw;
+    padding-right: 2vw;
+    border-radius: 20px;
+    font-family: 'Dubai Bold';
+    text-align: center;
+    color: white;
+}
+
+#streamerName {
+    text-align: center;
+    margin-left: 25vw;
+    margin-right: 25vw;
+    color: white;
+    font-family: 'Dubai Bold';
+    text-align: center;
+    font-size: 4em;
+}

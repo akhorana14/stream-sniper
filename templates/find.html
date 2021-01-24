@@ -19,23 +19,33 @@
     </div>
 
     <div>
-        <p id="team">Select Your Favorite Streamers </p>
-        <input onkeypress="addStreamer();" type="text" id="search">
-        <form id="streamer" action="/sendStreamer" method="post">
-            <input data="streamers" style="opacity: 0;">
-            <input type="submit" id="go" style="opacity: 1;">
-        </form>
-        
-    </div>
-
-    <div>
-        <p id="team">OR Enter your Twitch Username: </p>
-        <input onkeypress="addUsername();" type="text" id="search2">
+        <p id="team">Enter your Twitch Username: </p>
+        <input style="align-content: center;
+        top: 38vh;
+        left:33vw;
+        text-align: left;
+        font-size: 1.5em;
+        width: 30vw;
+        margin-left: 35vw;" onkeypress="addUsername();" type="text" id="search2">
         
         <form action="/sendUser" id="user" method="GET" enctype="text/html; charset=utf-8">
             <input type="hidden" id = "hiddenField" name="id" value="10"/>
         </form>
     </div>
+    
+    <div>
+        <p id="team">OR: Find a Random Streamers!</p>
+        <button style="align-content: center;
+        top: 38vh;
+        margin-right: 57.5vw;
+        text-align: center;
+        font-size: 1.5em;
+        width: 15vw;
+        margin-left: 42.5vw;"
+        onclick="randomStreamer();" type="button" id="search" value = "I'm Feeling Lucky!">I'm Feeling Lucky!</button>
+    </div>
+
+    
     <script>
         function addUsername() {
             var yourName = document.getElementById("search2").value
@@ -46,18 +56,9 @@
             }
         }
         
-        function addStreamer() {
-            var streamerName = document.getElementById("search").value
-            if(event.keyCode == 13 && streamerName != "") {
-                var button = document.createElement("button");
-                streamers.push(streamerName);
-                console.log("LIST START")
-                button.innerHTML = streamerName;
-                button.className = "selection";
-                button.id = streamerName
-                button.setAttribute("onClick", "remove(this); streamers.pop(this.innerHTML);");
-                document.body.appendChild(button); 
-            }
+        function randomStreamer() {
+            document.getElementById('hiddenField').value= '_';
+            document.getElementById("user").submit();
         }
 
         function remove(el) {

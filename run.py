@@ -19,14 +19,14 @@ def find():
    return render_template('find.html')
 @app.route('/sendUser', methods=['GET'])
 def sendUser():
-    if request.method == 'GET':
+   if request.method == 'GET':
       user_name = request.args['id']
       streamers = getInfoFromAccount(user_name)
-      s=""
+      s = []
       for streamer in streamers:
          for attr in streamer:
-            s+=attr+", "
-      return s
+            s.append(attr)
+      return render_template('sendStreamers.html',s1 = s[0], s2 = s[1], s3 = s[2], s4 = s[3], s5 = s[4], s6 = s[5], s7 = s[6], s8 = s[7], s9 = s[8], s10 = s[9], s11 = s[10], s12 = s[11], s13 = s[12], s14 = s[13], s15 = s[14])
 @app.route('/uploadStreamer', methods=['POST'])
 def sendStreamer():
    return '<p>Sent Streamers</p>'
