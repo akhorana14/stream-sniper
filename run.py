@@ -17,12 +17,11 @@ def about():
 @app.route('/find.html')
 def find():
    return render_template('find.html')
-@app.route('/sendUser', methods=['GET','POST'])
+@app.route('/sendUser', methods=['GET'])
 def sendUser():
-   if request.method == 'POST':
-      print(request.data)
-      user_name = request.form['id']
-      print(user_name + "\n\n\n\n\n\n\n\n\n")
+    if request.method == 'GET':
+      user_name = request.args['id']
+      print(user_name)
       return getRecommendations(user_name)
 @app.route('/uploadStreamer', methods=['POST'])
 def sendStreamer():
