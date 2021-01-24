@@ -1,5 +1,6 @@
 
 from twitch import TwitchClient
+import sys, requests,json
 from twitch.constants import DIRECTIONS, DIRECTION_DESC, USERS_SORT_BY, USERS_SORT_BY_CREATED_AT
 import Credentials as cr
 import numpy as np
@@ -13,6 +14,7 @@ using a Twitch streamer's username.
 
 Jacob Zietek, Bryan Yakimisky
 '''
+
 
 
 
@@ -65,6 +67,9 @@ def getInfoFromAccount(username):
             del streamer_dict[streamers.channel.name]
 
     
+    return getList(streamer_dict)
+
+def getList(streamer_dict): 
     streamer_dict = sorted(streamer_dict.items(), key = 
         lambda kv:(kv[1], kv[0]),reverse = True)
 
@@ -81,11 +86,29 @@ def getInfoFromAccount(username):
 
 
     return streamers
-    
+      
+def randomStreamer():
+    Headers = {'Client-ID': 'gp762nuuoqcoxypju8c569th9wz7q5', 'Authorization': "Bearer " + '8y3pmm4jme26d3ap1ace51wf3uxjsi'}
+    r = requests.get('https://api.twitch.tv/helix/streams?first=' + str(100), headers=Headers)
+    raw = r.text.encode('utf-8')
+    j = json.loads(raw)
+    sys.stdout.flush()
+    dict = {}
+    streamers = [element['user_name'] for element in j['data']]
 
-    
-  
-    
+    streamer_dict =  {}
+    for streamer in streamers:
+        try:
+            recs = getRecommendations(streamer)
+            for rec in recs:
+                if not rec in streamer_dict:
+                    streamer_dict[rec] = 1
+                else:
+                    streamer_dict[rec] +=1
+        except IndexError:
+            continue
+
+    return getList(streamer_dict)
 
     
 
@@ -98,4 +121,4 @@ def getInfoFromAccount(username):
 
 
 if __name__ == '__main__':
-    getInfoFromAccount('SpecialSnowflack')
+    print(getInfoFromAccount('SpecialSnowflack'))
