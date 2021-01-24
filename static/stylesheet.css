@@ -156,13 +156,6 @@ a.linkedin {
     opacity: 1;
 }
 
-#streamer {
-    position: fixed;
-    outline: white;
-    border: white;
-    align-content: center;
-}
-
 #visit {
     padding-left: 2vw;
     padding-right: 2vw;
