@@ -33,7 +33,8 @@
         <input onkeypress="addUsername();" type="text" id="search2">
         
         <form id="user" action="/sendUser" method="post">
-            <input data="yourName" style="opacity: 0;">
+            <!-- <input data="yourName" name="name" style="opacity: 0;"> -->
+            <input type='hidden' id= 'hiddenField' name='id' />
             <input type="submit" id="go" style="opacity: 1;"> 
         </form>
     </div>
@@ -42,7 +43,7 @@
             var yourName = document.getElementById("search2").value
             if(event.keyCode == 13 && yourName != "") {
                 console.log(yourName);
-                
+                document.getElementById('hiddenField').value = yourName;
             }
         }
         

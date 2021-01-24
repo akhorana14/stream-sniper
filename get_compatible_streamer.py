@@ -10,6 +10,7 @@ import pandas as pd
 from random import random
 from random import randrange
 
+
 df = pd.read_csv('./Dec12Edges.csv')
     
 input_username = "Nivfnja"
