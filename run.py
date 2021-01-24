@@ -16,6 +16,12 @@ def about():
 @app.route('/find.html')
 def find():
    return render_template('find.html')
+@app.route('/uploadUser', methods=['POST'])
+def sendUser():
+   return '<p>Sent Username</p>'
+@app.route('/uploadStreamer', methods=['POST'])
+def sendStreamer():
+   return '<p>Sent Streamers</p>'
    
 if __name__ == '__main__':
    app.run(debug=True)

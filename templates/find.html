@@ -6,16 +6,65 @@
     <meta name="description" content="Find new Twitch channels to watch!">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/stylesheet.css">
-    <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
-    <script type="text/javascript" src="../js/skrollr.min.js"></script>
-    <script type="text/javascript" src="../js/vendor/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="../js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
 </head>
+<script>
+    var streamers = []
+</script>
 <body style="background-image: url(../static/back.png);">
     <div id="topnav">
         <a class="topnav" href="index.html" >Home</a>
         <a class="topnav" href="about.html">About Us</a>
         <a class="topnav" href="find.html">Find Streamers</a>
     </div>
+
+    <div>
+        <p id="team">Select Your Favorite Streamers </p>
+        <input onkeypress="addStreamer();" type="text" id="search">
+        <form id="streamer" action="/sendStreamer" method="post">
+            <input data="streamers" style="opacity: 0;">
+            <input type="submit" id="go" style="opacity: 1;">
+        </form>
+        
+    </div>
+
+    <div>
+        <p id="team">OR Enter your Twitch Username: </p>
+        <input onkeypress="addUsername();" type="text" id="search2">
+        
+        <form id="user" action="/sendUser" method="post">
+            <input data="yourName" style="opacity: 0;">
+            <input type="submit" id="go" style="opacity: 1;"> 
+        </form>
+    </div>
+    <script>
+        function addUsername() {
+            var yourName = document.getElementById("search2").value
+            if(event.keyCode == 13 && yourName != "") {
+                console.log(yourName);
+                
+            }
+        }
+        
+        function addStreamer() {
+            var streamerName = document.getElementById("search").value
+            if(event.keyCode == 13 && streamerName != "") {
+                var button = document.createElement("button");
+                streamers.push(streamerName);
+                console.log("LIST START")
+                button.innerHTML = streamerName;
+                button.className = "selection";
+                button.id = streamerName
+                button.setAttribute("onClick", "remove(this); streamers.pop(this.innerHTML);");
+                document.body.appendChild(button); 
+            }
+        }
+
+        function remove(el) {
+            var element = el;
+            element.remove();
+        }
+
+    </script>
+    
 </body>
