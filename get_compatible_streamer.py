@@ -10,10 +10,9 @@ import pandas as pd
 from random import random
 from random import randrange
 
-
 df = pd.read_csv('./Dec12Edges.csv')
     
-input_username = "Nivfnja"
+input_username = "Ninja"
 
 # Gathers all rows streamer is in from the dataframe
 streamer_rows = df['Target'].loc[lambda x: x==input_username].index

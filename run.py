@@ -21,8 +21,12 @@ def find():
 def sendUser():
     if request.method == 'GET':
       user_name = request.args['id']
-      print(user_name)
-      return getRecommendations(user_name)
+      streamers = getInfoFromAccount(user_name)
+      s=""
+      for streamer in streamers:
+         for attr in streamer:
+            s+=attr+", "
+      return s
 @app.route('/uploadStreamer', methods=['POST'])
 def sendStreamer():
    return '<p>Sent Streamers</p>'
