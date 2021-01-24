@@ -88,6 +88,7 @@ def getList(streamer_dict):
     return streamers
       
 def randomStreamer():
+    import re
     Headers = {'Client-ID': 'gp762nuuoqcoxypju8c569th9wz7q5', 'Authorization': "Bearer " + '8y3pmm4jme26d3ap1ace51wf3uxjsi'}
     r = requests.get('https://api.twitch.tv/helix/streams?first=' + str(100), headers=Headers)
     raw = r.text.encode('utf-8')
@@ -95,8 +96,10 @@ def randomStreamer():
     sys.stdout.flush()
     dict = {}
     streamers = [element['user_name'] for element in j['data']]
+    streamers = [idx for idx in streamers if not re.findall("[^\u0000-\u05C0\u2100-\u214F]+", idx)] 
 
-    i = int(random() * 50)
+
+    i = int(random() * 30)
     streamer_dict =  {streamers[i] : 1, streamers[i+10] : 1, streamers[i+20] : 1, streamers[i+30] : 1, streamers[i+40] : 1}
 
     return getList(streamer_dict)
