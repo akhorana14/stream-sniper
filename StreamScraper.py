@@ -72,9 +72,15 @@ def getInfoFromAccount(username):
     l = []
     for i in range(5):
         l.append(streamer_dict[i][0])
-    
 
-    return l
+    streamers = []
+    users = client.users.translate_usernames_to_ids(l)
+    for streamer in users:
+        channel = client.channels.get_by_id(streamer.id)
+        streamers.append([channel.name,channel.logo,channel.url])
+
+
+    return streamers
     
 
     
